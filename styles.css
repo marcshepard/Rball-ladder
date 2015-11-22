@@ -1,0 +1,25 @@
+
+/* Make the banner pop with a blue color and green background, and make the logo the rigth size */
+
+h1, h2 {
+    color:blue;
+}
+
+.banner {
+    background-color:lightgreen;
+}
+
+.logo {
+    max-height: 50px;
+    max-width: 100%;
+}
+
+body {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td{
+    padding: 1px;
+}
+

@@ -1,0 +1,174 @@
+﻿<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <title>Faux rball ladder</title>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="script.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <h1 class="banner">
+            <img class="logo" src="rball_logo.jpg" />
+            Faux Raquetball Ladder
+        </h1>
+        <p>
+            <a href="index.html">Home</a>
+            &nbsp; 
+            <a class="hide_if_logged_in" href="#login">Sign in</a>
+            <a class="hide_if_not_logged_in" href="index.html" onclick="logout()">Sign out</a>
+            &nbsp;
+            <span class="hide_if_logged_in">Please sign in</span>
+            <span class="hide_if_not_logged_in">Hi <span class="user_name"></span>!</span>
+        </p>
+        <p>
+            My name is Marc Shepard, and I like playing raquetball.
+            One of my coworkers runs a raquetball ladder and uses a manual process of sending out email, recording the
+            scores, adjusting things for the next round, etc. I thought it would be nice to have a web site to take care of all that,
+            and signed up for this class so I could learn how to do it. OK - that's enough about me...
+        </p>
+        <p>
+            In this assigment. the image is at the top left of this site (rball logo), the interactive elements are the login and score entry bits.
+            It's not hooked up to anything, so all the buttons you click (for login/match results/etc) don't actually do anything
+            real (they just change the web page look a bit, using jscript variables for state, until you reload the page).
+            The rest is basically translating the weekly email I get from my coworker into HTLM/CSS/jscript with fake data.
+            Hopefully in future classes I'll learn how to hook this up to some kind of data store and host it all somewhere.
+            I used the boostrap "responsive table" in the new ladder section to make the page responsive. It works nicely.
+        </p>
+
+        <h1>New round ends <span id="round_ends">some day</span> at 9am</h1>
+        <p>Make sure to play your matches and record you score to avoid the no-play penalty (and risk getting
+        removed from the ladder). <span id="additional_message"></span></p>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <th>Rank</th>
+                    <th>Points</th>
+                    <th>Name</th>
+                    <th>Old Rank</th>
+                    <th>Last Above Result</th>
+                    <th>Last Below Result</th>
+                    <th>Last Bonus Result</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>99.2</td>
+                    <td><a href="mailto:joesmith@email.com">Joe Smith</a></td>
+                    <td>2</td>
+                    <td>W(Harry)</td>
+                    <td>W(Sarah)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>99.1</td>
+                    <td><a href="mailto:harryng@email.com">Harry Ng</a></td>
+                    <td>1</td>
+                    <td>W(Sarah)</td>
+                    <td>L(Joe)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>88.4</td>
+                    <td><a href="mailto:sarahash@email.com">Sarah Ash</a></td>
+                    <td>Return</td>
+                    <td>L(Joe)</td>
+                    <td>W(Goober)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>82</td>
+                    <td><a href="mailto:gooberjr@email.com">Goober Junior</a></td>
+                    <td>New</td>
+                    <td>L(Sarah)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div> 
+        
+        <h1>Report Match Results</h1>
+        <div id="login" class="hide_if_logged_in">
+            <p>To report your match results, you must first login. On this faux page, you can type in anything below
+            (since we don't actually log you in). Your user name will be stored in a variable and used in other
+            parts of the page.</p>
+            <table cellpadding="10">
+                <tr>
+                    <td>User name: &nbsp;</td>
+                    <td><input type="text" id="user_name" /></td>
+                </tr>
+                <tr>
+                    <td>Password: &nbsp;</td>
+                    <td><input type="password" /></td>
+                </tr>
+                <tr>
+                    <td><button onclick="login()" type="submit">Login</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div id="reportResults" class="hide_if_not_logged_in">
+            <p>Hi <span class="user_name"></span>, please make sure the games are played and results are reported before the round
+            ends to avoid both players getting a no-play penalty.</p>
+            <table>
+                <tr>
+                    <td>Results vs Jim: &nbsp;</td>
+                    <td><select><option value="N"></option><option value="W">W</option><option value="L">L</option><option value="T">T</option></select></td>
+                </tr>
+                <tr>
+                    <td>Results vs Mary: &nbsp;</td>
+                    <td><select><option value="N"></option><option value="W">W</option><option value="L">L</option><option value="T">T</option></select></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" onclick="reportResults()">Report</button></td>
+                    <td><span id="results_confirmation"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <h1>Player Activity Between Rounds</h1>
+        <table class="table table-striped table-condensed">
+            <tr>
+                <th>Returned</th>
+                <th>Dropped</th>
+                <th>New</th>
+            </tr>
+            <tr>
+                <td>Sarah</td>
+                <td>Jackson</td>
+                <td>Goober Jr</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Eve</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <h1>Ladder rules</h1>
+        <p>Being on the ladder is a privilege, so as a courtesy to others please make an attempt to play your matches. If you consistently miss matches, you may be dropped from the ladder (by me). If you need to drop temporarily due to work schedule, vacation, etc, just update your status on the login page and update it again when you are reqady to rejoin. You will return you with the same number of points as you left with. It is an easy thing to do, and allows the others on the ladder to keep playing their matches.</p>
+        <p>Matches are best of three, the first two games first to 15 (no need to win by two), with the tie breaker game first to 11 (no need to win by two). If both players agree, the tie breaker game can be played to 15. For the tie breaker, the general rule is that the person who had the most points in the game they lost gets to serve the tie breaker. If both players had the same points in their respective losses, you should lag for serve (as you do to start the first game).</p>
+        <p>Schedule your matches early, and get them played. You are required to play the person immediately above you, and the person immediately below you. (Of course, number 1 only has one required match, as does the person at the bottom of the ladder.) You will gain 1.1 points for each match won, and you will lose 1.1 points for a match loss. Remember, there is a -1.2 point penalty for no plays. This is actually worse than a loss, so if you can play, but your partner can't, feel free to take a forfeit.</p>
+        <p><b>Please do NOT report a W for a match that is not played.</b> Only report a W if you play and win the match. If the match is not played, it is either to be reported as a WF, or left as a no play. I want to know who is playing and who is not. I can’t do so if you report a W for a match not played. I’m asking for you all to be honest here and play by my rules.</p>
+        <p>There also is the ability to have a bonus match. Each player is limited to one bonus match per round. That match can be against anyone on the ladder, provided both players have reported both their other match results. If anyone sends in a bonus match, and one of the two participants has not reported both required matches before I process the ladder, the bonus match will not count. Bonus matches are for those players who have scheduled both their required ladder matches. Before scheduling a bonus match with someone, you might want to check with them to make sure they'll get both their other matches in. We've had a number of cases where one person in the bonus round failed to get both matches in, causing the other player (usually the winner of the bonus match), to miss out on the points. Again, for the top and bottom players, this means after scheduling the one required match with your immediate partner. The winner of a bonus match will receive points (up to 1.1, depending upon how far apart in the ladder the two players are). The loser will not lose any points. This should allow lower level players to challenge those higher than themselves, without the higher player being concerned about losing points to a lower opponent.</p>
+        <p>A clarification on the bonus point system. If a lower ranking player beats a higher ranking player, he or she will actually receive more than 1.1 points. You get 1.1 points for the win, plus 0.1 points for every spot higher on the ladder the opponent is than yourself. Also, you lose 0.1 points per ranking position if you are the higher ranked player who won. So, point wise, it doesn't really do you much good to beat up on players more than a few positions below you in the ladder. It may still be a fun match, just don't expect to get the same 1.1 points as a normal match.</p>
+        <p>There have also been questions regarding the point system. Simply put, the points won/lost for each round do not directly carry over to the next round. They are simply used to calculate a position on the new ladder. The way the scoring works, is that everyone starts with a base number of points (99), and from there, you subtract your position for the current ladder. That gives you your base points. Then, you add or subtract your points for the current round. That gives you your points for this round. I then sort on those points, rank the players, and that's how it works. So, points do not carry over (nor are they cumulative between rounds).</p>
+        <p>I also implemented a Tie match result. This is for matches that have been played, but no winner was declared due to lack of time to complete the match (not due to an injury - that is a forfeit). In this case, the match goes in as a 'T', with no points awarded or lost. This is only for matches that have been scheduled, but could not be completed, as you lost the court, and couldn't schedule the completion. A tie is not for matches where neither players schedules worked out to schedule the match. In those cases, you would need to take a no play.</p>
+        <p>A WF or LF in the results indicate a win or loss by forfeit.</p>
+            
+        <h2>Eyewear</h2>
+        <p>Each player is required to wear some sort of eye protection during match play. The member vote was to allow regular glasses, so that will stand. The main reason behind this is a few players stated their glasses were regulation, but you wouldn't necessarily be able to tell by looking. So, to not cause problems with that, standard glasses are permitted for play. If a player shows up for a match without any eye wear, the opponent has the OPTION of reporting that match as a forfeit, if he or she so chooses. That does not mean it is an automatic forfeit. The opponent can choose to play the match against the person without eyewear, but if so, no forfeit can be reported (due to lack of eye glasses).</p>
+
+        <h2>Backwall</h2>
+        <p>There no longer are any red lines on the back wall, so the only obstructions would be the vents, doors, and the seam where the glass and wall meet. If the ball hits any of them, simply call a court hinder and replay the point.</p>
+
+        <h2>Additional info</h2>
+        <p>Let me know if you have any questions. And, have a great time playing.</p>
+        <p>For scheduling matches, you can check availability at: <a href="http://proclub.com/Home/AthleticsFitness/Racquetball/tabid/305/Default.aspx">http://proclub.com/Home/AthleticsFitness/Racquetball/tabid/305/Default.aspx</a></p>
+        <p>Also, for your reference, here is a link to the US Racquetball Association: <a href="http://www.teamusa.org/~/media/USA_Racquetball/Documents/Rules/USARRulebookSeptember102013.pdf">http://www.teamusa.org/~/media/USA_Racquetball/Documents/Rules/USARRulebookSeptember102013.pdf</a></p>
+
+        <script type="text/javascript">init();</script>
+    </body>
+</html>
