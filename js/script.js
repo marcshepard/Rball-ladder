@@ -4,20 +4,21 @@
 // Some data that will eventually be in a cookie (once I learn how)
 var loggedInUser = $.cookie("user");
 var loggedIn = (loggedInUser != null);
-console.log(loggedInUser);
-console.log(loggedIn);
+console.log("Running script: loggedInUser = " + loggedInUser + ", loggedIn = " + loggedIn);
 
 // Some data that will eventually come from a data store (once I learn how)
 var roundEnds = new Date("Jan 4, 2016");
 
 // Init - Initialize data in the web page after the page loads
-function init () {
+function init() {
+    console.log("+init");
     $("#round_ends").text(roundEnds.toDateString());
     if (loggedIn) {
         set_loggedin();
     } else {
         logout();
     }
+    console.log("-init");
 }
 
 function login() {
@@ -28,34 +29,24 @@ function login() {
 }
 
 function set_loggedin() {
-    //console.log ("+login");
+    console.log ("+set_loggin");
     loggedIn = true;
     loggedInUser = $.cookie("user");
-    console.log("setting loggedInUser to " + u);
-    //console.log(loggedInUser);
+    console.log(loggedInUser);
     $(".user_name").text(loggedInUser);
-    //console.log ($(".hide_if_not_logged_in").css("display").toString());
-    //console.log ($(".hide_if_logged_in").css("display").toString());
     $(".hide_if_not_logged_in").css("display", "inline");
     $(".hide_if_logged_in").css("display", "none");
-    //console.log ($(".hide_if_not_logged_in").css("display").toString());
-    //console.log ($(".hide_if_logged_in").css("display").toString());
-    //console.log ("-login");
+    console.log ("-set_loggin");
 }
 
 function logout () {
-    //console.log ("+logout");
+    console.log ("+logout");
     loggedIn = false;
     loggedInUser = null;
     $.removeCookie("user");
-    //console.log ($(".hide_if_not_logged_in").css("display").toString());
-    //console.log ($(".hide_if_logged_in").css("display").toString());
     $(".hide_if_not_logged_in").css("display", "none");
     $(".hide_if_logged_in").css("display", "inline");
-    //console.log ($(".hide_if_not_logged_in").css("display").toString());
-    //console.log ($(".hide_if_logged_in").css("display").toString());
-    //$("#results_confirmation").text("");
-    //console.log ("-logout");
+    console.log ("-logout");
 }
 
 // submitResults - When user submits results, give them a confirmation
