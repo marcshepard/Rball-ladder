@@ -24,24 +24,35 @@
             <img class="logo" src="rball_logo.jpg" />
             Rball Ladder
         </h1>
+
         <nav class="navbar">
             <div class="container-fluid">
                 <ul class="nav nav-tabs">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li class="hide_if_not_logged_in"><a href="admin.html">Admin</a></li>
-                    <li class="navbar-right hide_if_logged_in"><a href="index.html#login">Sign in</a></li>
-                    <li class="navbar-right hide_if_not_logged_in"><a href="index.html" onclick="logout()">Sign out</a></li>
-                    <li class="navbar-right active"><a href="settings.html">Hi <span class="user_name"></span></a></li>
+                    <li class="navbar-right active"><a href="settings.html">Settings</a></li>
                 </ul>
             </div>
         </nav>
 
-        <p>Get feedback on what is needed for user "settings page". Is the below sufficient?</p>
+        <p class="hide_if_not_logged_in">You are signed in as <span class="user_name"></span>. <a href="index.html" onclick="logout()">Sign out</a></p>
+
+        <p>Get feedback on what is needed for "user settings". Is the below sufficient?</p>
         <ul>
             <li>Let user change advice status for next time</li>
             <li>Email address</li>
             <li>Do we let them change anything else?</li>
+        </ul>
+
+        <p>Get feedback on what is needed for "admin settings" (if logged in user is an admin). Is the below sufficient?</p>
+        <ul>
+            <li>Start a new round with given end-date and round message</li>
+            <li>Adjust current round end-date</li>
+            <li>Adjust current round message</li>
+            <li>Approve new player for next round</li>
+            <li>Force rest a player (for a round - first warning for too many missed plays)</li>
+            <li>Drop player (permanently)</li>
+            <li>Adjust a players points/rank</li>
         </ul>
 
         <script type="text/javascript">init();</script>
