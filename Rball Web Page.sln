@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CA02FF9-A6DF-483F-8923-56F51873F418}"
+	ProjectSection(SolutionItems) = preProject
+		about.html = about.html
+		admin.html = admin.html
+		index.html = index.html
+		settings.html = settings.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{017B7328-3B04-44A0-8E70-A36004D4963B}"
+	ProjectSection(SolutionItems) = preProject
+		css\bootstrap.min.css = css\bootstrap.min.css
+		css\styles.css = css\styles.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{01A33249-17F2-4C8C-AB79-10A3AF7C3FD5}"
+	ProjectSection(SolutionItems) = preProject
+		js\jquery.cookie.js = js\jquery.cookie.js
+		js\jquery.min.js = js\jquery.min.js
+		js\script.js = js\script.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{017B7328-3B04-44A0-8E70-A36004D4963B} = {4CA02FF9-A6DF-483F-8923-56F51873F418}
+		{01A33249-17F2-4C8C-AB79-10A3AF7C3FD5} = {4CA02FF9-A6DF-483F-8923-56F51873F418}
+	EndGlobalSection
+EndGlobal

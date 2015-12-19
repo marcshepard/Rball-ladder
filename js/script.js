@@ -2,27 +2,36 @@
 //console.log ("In js file...")
 
 // Some data that will eventually be in a cookie (once I learn how)
-var loggedIn = false;
-var loggedInUser = null;
+var loggedInUser = $.cookie("user");
+var loggedIn = (loggedInUser != null);
+console.log(loggedInUser);
+console.log(loggedIn);
 
 // Some data that will eventually come from a data store (once I learn how)
-var roundEnds = new Date("Dec 7, 2015 09:00:00");
-var additionalMessage = "I had a really nice ham sandwich last weekend.";
+var roundEnds = new Date("Jan 4, 2016");
 
 // Init - Initialize data in the web page after the page loads
 function init () {
     $("#round_ends").text(roundEnds.toDateString());
-    document.getElementById("additional_message").innerHTML = additionalMessage;
-    logout();
+    if (loggedIn) {
+        set_loggedin();
+    } else {
+        logout();
+    }
 }
 
-// Login - After user does faux login, track state and adjust what page shows
-// It will show a "sign out" link at the top (instead of a sign in link), show who is
-// is currently logged in, and disable "login form" (instead have submit results form)
 function login() {
+    u = document.getElementById("user_name").value;
+    console.log("login: user = " + u);
+    $.cookie("user", u);
+    set_loggedin();
+}
+
+function set_loggedin() {
     //console.log ("+login");
     loggedIn = true;
-    loggedInUser = document.getElementById("user_name").value;
+    loggedInUser = $.cookie("user");
+    console.log("setting loggedInUser to " + u);
     //console.log(loggedInUser);
     $(".user_name").text(loggedInUser);
     //console.log ($(".hide_if_not_logged_in").css("display").toString());
@@ -34,20 +43,18 @@ function login() {
     //console.log ("-login");
 }
 
-// Logout - After user does faux logout, track state and adjust what the page shows
-// It will show a "sign in" link at the top (instead of a sign out link), show no one
-// is currently logged in, and disable "submit results" form (instead have login form)
 function logout () {
     //console.log ("+logout");
     loggedIn = false;
-    loggedInUser=null;
+    loggedInUser = null;
+    $.removeCookie("user");
     //console.log ($(".hide_if_not_logged_in").css("display").toString());
     //console.log ($(".hide_if_logged_in").css("display").toString());
     $(".hide_if_not_logged_in").css("display", "none");
     $(".hide_if_logged_in").css("display", "inline");
     //console.log ($(".hide_if_not_logged_in").css("display").toString());
     //console.log ($(".hide_if_logged_in").css("display").toString());
-    $("#results_confirmation").text("");
+    //$("#results_confirmation").text("");
     //console.log ("-logout");
 }
 
